@@ -1,5 +1,5 @@
 
-# Proxmox Terraform Example 
+# Proxmox Terraform VM Example 
 This repository provides a Terraform example for deploying a virtual machine (VM) to a Proxmox VE server. It demonstrates how to use the Terraform Proxmox provider to provision a VM in a local environment, mirroring the experience of deploying VMs in cloud environments like AWS, Azure, GCP, or even VMware.
 
 - This is a working and tested example; that should be easy to setup and will do my best below for that.
