@@ -2,13 +2,21 @@
 # Proxmox Terraform Example 
 This repository provides a Terraform example for deploying a virtual machine (VM) to a Proxmox VE server. It demonstrates how to use the Terraform Proxmox provider to provision a VM in a local environment, mirroring the experience of deploying VMs in cloud environments like AWS, Azure, GCP, or even VMware.
 
+- This is a working and tested example; that should be easy to setup and will do my best below for that.
 - For production environments, you'll typically use Terraform within CI/CD pipelines alongside other tools.
+
+- Terraform in 2 Hours:** If you're looking for a comprehensive introduction to Terraform on AWS, this video is a great resource:
+    * [https://www.youtube.com/watch?v=SLB_c_ayRMo&t=12s](https://www.youtube.com/watch?v=SLB_c_ayRMo&t=12s)
+- This repo is for Proxmox - something you setup in your home.
     * This example focuses on basic VM deployment. However, it's essential to understand that real-world Terraform usage involves more complex workflows and integrations.
 -Cost-Effective Practice:**
     * Cloud platforms are excellent, but they come with costs.
     * This Proxmox setup lets you practice Terraform with real virtual machines without incurring those costs. You can experiment, make mistakes, and learn from them without worrying about a hefty bill.
     * This is especially crucial for beginners who want to explore Terraform's capabilities without financial risk.
     * Any working server / desktop / laptop will work to get started.
+    * Go to proxmox.com and download a ISO, burn a USB key and boot off the key
+    * You will setup the Proxmox server and have a root user and password
+    * If you get me feedback; can update this documentation to improve.
 - Hands-On, Tangible Results:**
     * Instead of just reading documentation or watching videos, you'll be actively creating and managing real VMs. This hands-on experience solidifies your understanding of Terraform concepts.
     * You can see the direct impact of your Terraform code, which reinforces the learning process.
