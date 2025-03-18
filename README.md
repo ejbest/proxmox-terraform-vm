@@ -18,6 +18,7 @@ This repository provides a Terraform example for deploying a virtual machine (VM
     * It essential to understand that real-world Terraform usage involves more complex workflows and integrations.
     * This Proxmox setup lets you practice Terraform with real virtual machines without incurring those costs. You can experiment, make mistakes, and learn from them without worrying about a hefty bill.
     * This is especially crucial for beginners who want to explore Terraform's capabilities without financial risk.
+    * If on cloud - if you pause and come back later; there is a cost the whole time 
 - Hands-On, Tangible Results:**
     * Instead of just reading documentation or watching videos, you'll be actively creating and managing real VMs. This hands-on experience solidifies your understanding of Terraform concepts.
     * You can see the direct impact of your Terraform code, which reinforces the learning process.
