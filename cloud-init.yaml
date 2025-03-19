@@ -1,0 +1,61 @@
+#cloud-config
+output:
+  all: "| tee -a /var/log/cloud-init-output.log"
+
+users:
+  - name: ${ssh_user}
+    groups: [sudo]
+    shell: /bin/bash
+    lock-passwd: false
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      - ${ssh_pub_key}
+ssh_pwauth: False
+expire: False
+
+preserve_hostname: false
+manage_etc_hosts: false
+fqdn: ${hostname}
+
+package_update: true
+package_upgrade: true
+packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gnupg-agent
+  - software-properties-common
+  - qemu-guest-agent
+  - jq
+  - zip
+  - unzip
+  - gnupg
+
+# Disable cloud-init network management
+network:
+  config: disabled
+
+# Write static IP configuration file using write_files
+write_files:
+  - path: /etc/netplan/50-cloud-init.yaml
+    content: |
+      network:
+        version: 2
+        ethernets:
+          ens18:
+            dhcp4: false
+            addresses:
+              - ${ip_address}
+            gateway4: ${gateway}
+            nameservers:
+              addresses:
+                - 8.8.8.8
+                - 8.8.4.4
+
+runcmd:
+  - cat /etc/netplan/50-cloud-init.yaml
+  - netplan apply
+  - apt update -y
+  - exit
+
+final_message: "The system is finally up, after $UPTIME seconds"

@@ -1,0 +1,6 @@
+terraform validate
+
+terraform plan 
+
+
+

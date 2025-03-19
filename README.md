@@ -1,95 +1,22 @@
+# nginx 
 
-# Proxmox Terraform VM Example 
-This repository provides a Terraform example for deploying a virtual machine (VM) to a Proxmox VE server. It demonstrates how to use the Terraform Proxmox provider to provision a VM in a local environment, mirroring the experience of deploying VMs in cloud environments like AWS, Azure, GCP, or even VMware.
+## Goals for this repo
+1. use Hashicorp Vault Credentials
+2. use new DNS module previously created 
+3. use nginx https git 
+4. what are best practices for vars and clean files 
+https://github.com/SeattleDevs/letsencrypt-cloudflare-hook
 
-- This is a working and tested example; that should be easy to setup and will do my best below for that.
-- For production environments, you'll typically use Terraform within CI/CD pipelines alongside other tools.
+#### Above was already started up 
 
-- Terraform in 2 Hours:** If you're looking for a comprehensive introduction to Terraform on AWS, this video is a great resource:
-    * [https://www.youtube.com/watch?v=SLB_c_ayRMo&t=12s](https://www.youtube.com/watch?v=SLB_c_ayRMo&t=12s)
-- This repo is for Proxmox - something you setup can your home.
-    * Any working server / desktop / laptop will work to get started.
-    * Go to proxmox.com and download a ISO, burn a USB key and boot off the key
-    * You will setup the Proxmox server and have a root user and password
-    * If you get me feedback; can update this documentation to improve.
-    * This example focuses on basic VM deployment.
--Cost-Effective Practice:**
-    * Cloud platforms are excellent, but they come with costs.
-    * It essential to understand that real-world Terraform usage involves more complex workflows and integrations.
-    * This Proxmox setup lets you practice Terraform with real virtual machines without incurring those costs. You can experiment, make mistakes, and learn from them without worrying about a hefty bill.
-    * This is especially crucial for beginners who want to explore Terraform's capabilities without financial risk.
-    * If on cloud - if you pause and come back later; there is a cost the whole time 
-- Hands-On, Tangible Results:**
-    * Instead of just reading documentation or watching videos, you'll be actively creating and managing real VMs. This hands-on experience solidifies your understanding of Terraform concepts.
-    * You can see the direct impact of your Terraform code, which reinforces the learning process.
--Bridging the Gap to Cloud:**
-    * The structure and workflow of this example are designed to closely resemble how Terraform is used in cloud environments. This makes it easier to transition to cloud deployments later on.
-    * You'll learn the fundamental concepts of infrastructure as code (IaC) in a familiar context, preparing you for more complex cloud architectures.
-
-## Features
-
-* **VM and Container Creation:** Simplifies the creation of Proxmox VMs and LXC containers.
-* **Networking Configuration:** Manages network interfaces, bridges, and VLANs.
-* **Storage Management:** Handles storage pools and disk configurations.
-* **Cloud-Init Support:** Integrates with Cloud-Init for initial VM/container configuration.
-* **Template Support:** Enables deployment from existing Proxmox templates.
-* **Resource Customization:** Allows fine-grained control over CPU, memory, and disk resources.
-* **Firewall Management:** Basic firewall rule management.
-* **SSH Key Injection:** Injects SSH keys for secure access.
-
-## Prerequisites
-
-- Terraform installed (version >= 1.5 recommended).
-- Proxmox VE server accessible 3.7-1 or later
-- Proxmox user or root user and password
-- Appropriate Proxmox storage and network configurations.
-- This Pipeline uses a `proxmox-base-module` for simplified VM creation. 
-[https://github.com/ejbest/proxmox-base-module](https://github.com/ejbest/proxmox-base-module)
-
-
-1.  **Clone the module:**
-
-    ```bash
-    git clone <repository_url>
-    cd <module_directory>
-    ```
-
-3.  **Initialize Terraform:**
-
-    ```bash
-    terraform init
-    ```
-
-4.  **Plan and apply:**
-
-    ```bash
-    terraform plan
-    terraform apply
-    ```
-
-## Variables
-
-| Name                | Description                                    | Type   | Default | Required |
-| :------------------ | :--------------------------------------------- | :----- | :------ | :------- |
-| `proxmox_endpoint`  | Proxmox API endpoint.                          | string |         | Yes      |
-| `proxmox_username`  | Proxmox username.                              | string |         | Yes      |
-| `proxmox_password`  | Proxmox password.                              | string |         | Yes     |
-| `node`              | Proxmox node name.                             | string |         | Yes      |
-| `storage`           | Proxmox storage pool.                          | string |         | Yes      |
-| `network_bridge`    | Proxmox network bridge.                        | string |         | Yes      |
-| `vms`               | Map of VM configurations.                      | map    | `{}`    | No       |
-
-## Outputs
-
-| Name             | Description                               |
-| :--------------- | :---------------------------------------- |
-| `vm_ids`         | Map of created VM IDs.                    |
-| `container_ids`  | Map of created Container IDs.             |
-
-## Contributing
-
-Contributions are welcome! Please submit a pull request or open an issue for any bugs or feature requests.
-
-## License
-
-This module is licensed under the MIT License.
+## Next Steps 
+1. vars.sh was updated to have TF_ENV, TF_ENV_KEY and BACKEND_STATE_KEY, ok?
+2. if you really want "run.sh" to work; perhaps these can be updated by the script please?  Update that values in vars.sh.
+3. want this to be built by addding root username and password (we have the code for this) ok please?
+    - Please see I added a copy of "vault-list-secrets.sh" here
+    - Do they need to be added; should we organize Vault different? 
+    - Really want this to have it's own Proxmox Token (want to use this logic for all proxmox eventually) please?
+    - what are the vault commands to a-read the username and password from vault and how to update that in vault 
+4. each time it runs; a new Proxmox Token should be created and deleted on the destroy token please?
+5. please add cloud-init section for apt update and other places (where should that be for best practices)
+6. are we using terraform workspaces on this; should we?
