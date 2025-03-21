@@ -46,6 +46,41 @@ This repository provides a Terraform example for deploying a virtual machine (VM
 - This Pipeline uses a `proxmox-base-module` for simplified VM creation. 
 [https://github.com/ejbest/proxmox-base-module](https://github.com/ejbest/proxmox-base-module)
 
+## Variables
+
+| Name                  | Description                                    | Type          | Default | 
+| :-------------------- | :--------------------------------------------- | :------------ | :------ |
+| proxmox_host          | IP you used for your proxmox host              | quoted string |         |
+| proxmox_node_hostname | Hostname you called your proxmox host "blue    | quoted string |         |
+| `proxmox_password`  | Proxmox password.                              | string |         | Yes     |
+| `node`              | Proxmox node name.                             | string |         | Yes      |
+| `storage`           | Proxmox storage pool.                          | string |         | Yes      |
+| `network_bridge`    | Proxmox network bridge.                        | string |         | Yes      |
+| `vms`               | Map of VM configurations.                      | map    | `{}`    | No       |
+
+       = "blue3"
+  pm_api_url                = "https://${local.proxmox_host}:8006/api2/json"
+  pm_user                   = "root@pam"
+  proxmox_host_ssh_password = 88888888
+  iso_storage_pool          = "local"
+  storage_pool              = "local-lvm"
+  cloud-init-disk-name      = "cloud-init-disk-name"
+  ip_address                = "192.168.3.131"
+  gateway                   = "192.168.3.1"
+  hostname                  = "example-vm1"
+  ipconfig                  = "ip=192.168.3.131/24,gw=192.168.3.1"
+  network_bridge            = "vmbr0"
+  private_ssh_keyname       = "key.pem"
+  ssh_user                  = "ej"
+  cores                     = 1
+  sockets                   = 1
+  memory                    = 1024
+  disk_size                 = 20
+  vmid                      = 8001
+  cloud_init_config_file    = "cloud-init.yaml"
+
+
+## Outputs
 
 1.  **Clone the module:**
 
@@ -66,25 +101,6 @@ This repository provides a Terraform example for deploying a virtual machine (VM
     terraform plan
     terraform apply
     ```
-
-## Variables
-
-| Name                | Description                                    | Type   | Default | Required |
-| :------------------ | :--------------------------------------------- | :----- | :------ | :------- |
-| `proxmox_endpoint`  | Proxmox API endpoint.                          | string |         | Yes      |
-| `proxmox_username`  | Proxmox username.                              | string |         | Yes      |
-| `proxmox_password`  | Proxmox password.                              | string |         | Yes     |
-| `node`              | Proxmox node name.                             | string |         | Yes      |
-| `storage`           | Proxmox storage pool.                          | string |         | Yes      |
-| `network_bridge`    | Proxmox network bridge.                        | string |         | Yes      |
-| `vms`               | Map of VM configurations.                      | map    | `{}`    | No       |
-
-## Outputs
-
-| Name             | Description                               |
-| :--------------- | :---------------------------------------- |
-| `vm_ids`         | Map of created VM IDs.                    |
-| `container_ids`  | Map of created Container IDs.             |
 
 ## Contributing
 
