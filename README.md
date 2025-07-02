@@ -10,9 +10,9 @@ This repository provides a Terraform example for deploying a virtual machine (VM
 - This repo is for Proxmox - something you setup can your home.
     * Any working server / desktop / laptop will work to get started.
     * Go to proxmox.com and download a ISO, burn a USB key and boot off the key
-      <pre> 
+<pre> 
 pveversion
-pve-manager/8.3.0/c1689ccb1065a83b (running kernel: 6.8.12-4-pve
+pve-manager/8.3.0
 </pre>
     * You will setup the Proxmox server and have a root user and password
     * If you get me feedback; can update this documentation to improve.
