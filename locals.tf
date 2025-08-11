@@ -1,6 +1,6 @@
 locals {
-  proxmox_host              = "192.168.2.103"
-  proxmox_node_hostname     = "green3"
+  proxmox_host              = "192.168.2.101"
+  proxmox_node_hostname     = "green"
   pm_api_url                = "https://${local.proxmox_host}:8006/api2/json"
   pm_user                   = "root@pam"
   proxmox_host_ssh_password = 88888888
@@ -18,6 +18,6 @@ locals {
   sockets                   = 1
   memory                    = 1024
   disk_size                 = 20
-  vmid                      = 8001
+  vmid                      = 8003
   cloud_init_config_file    = "cloud-init.yaml"
 }
