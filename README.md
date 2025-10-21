@@ -8,7 +8,8 @@ This repository provides a Terraform example for deploying a virtual machine (VM
 - Terraform in 2 Hours:** If you're looking for a comprehensive introduction to Terraform on AWS, this video is a great resource:
     * [https://www.youtube.com/watch?v=SLB_c_ayRMo&t=12s](https://www.youtube.com/watch?v=SLB_c_ayRMo&t=12s)
 
-   * [https://www.youtube.com/watch?v=sB_7MeaqaI0&list=PLAvgoEDVC5qGXVrwU7sHsVNOVyyBlhABm]
+- How to Install Proxmox Virtual Environment from "Learn To HomeLab" 
+    * https://www.youtube.com/watch?v=sB_7MeaqaI0&list=PLAvgoEDVC5qGXVrwU7sHsVNOVyyBlhABm
 
 - This repo is for Proxmox - something you setup can your home.
     * Any working server / desktop / laptop will work to get started.
