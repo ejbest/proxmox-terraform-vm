@@ -45,6 +45,8 @@ This repository provides a Terraform example for deploying a virtual machine (VM
 
 - Terraform installed (version >= 1.5 recommended).
 - Proxmox VE server accessible 3.7-1 or later
+- pveversion
+     pve-manager/8.3.0/c1689ccb1065a83b (running kernel: 6.8.12-4-pve)
 - Proxmox user or root user and password
 - Appropriate Proxmox storage and network configurations.
 - This Pipeline uses a `proxmox-base-module` for simplified VM creation. 
